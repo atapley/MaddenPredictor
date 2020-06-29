@@ -1,5 +1,6 @@
 import pandas as pd
 import helpers
+import os
 
 def clean_roster_data(version):
 
@@ -17,7 +18,7 @@ def clean_roster_data(version):
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=0)
             df = df[['Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv')
 
         if version == '2003':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=0)
@@ -25,14 +26,14 @@ def clean_roster_data(version):
             df.rename(columns={'Overall Rating': 'Overall'}, inplace=True)
             df = df[['Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv')
 
         if version == '2004':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=0)
             df['First Name'], df['Last Name'] = df['Name'].str.split(' ', 1).str
             df = df[['Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv')
 
         if version == '2005' or version == '06':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -43,7 +44,7 @@ def clean_roster_data(version):
                       inplace=True)
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
         if version == '07':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -53,7 +54,7 @@ def clean_roster_data(version):
                                'PLYR_OVERALLRATING': 'Overall'}, inplace=True)
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
         if version == '08':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -63,7 +64,7 @@ def clean_roster_data(version):
                                'Overall_Rating': 'Overall'}, inplace=True)
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
         if version == '09':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -73,7 +74,7 @@ def clean_roster_data(version):
                                'OVERALL': 'Overall'}, inplace=True)
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
         if version == '10':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=0)
@@ -84,7 +85,7 @@ def clean_roster_data(version):
                       inplace=True)
             df = df[['Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv')
 
         if version == '11':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=0)
@@ -95,7 +96,7 @@ def clean_roster_data(version):
                       inplace=True)
             df = df[['Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv')
 
         if version == '12':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -105,13 +106,13 @@ def clean_roster_data(version):
             df['First Name'], df['Last Name'] = df['Name'].str.split(' ', 1).str
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
         if version == '13' or version == '17' or version == '18' or version == '25':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=0)
             df = df[['Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv')
 
         if version == '15':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -122,7 +123,7 @@ def clean_roster_data(version):
                                'POSITION': 'Position'}, inplace=True)
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
         if version == '16':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -130,14 +131,14 @@ def clean_roster_data(version):
             df.rename(columns={'OVR': 'Overall'}, inplace=True)
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
         if version == '19':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=0)
             df['First Name'], df['Last Name'] = df['Name'].str.split(' ', 1).str
             df = df[['Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv')
 
         if version == '20':
             df = pd.read_excel('MaddenRosters/' + version + '/' + team + ext, index_col=None)
@@ -145,7 +146,7 @@ def clean_roster_data(version):
             df['First Name'], df['Last Name'] = df['Name'].str.split(' ', 1).str
             df = df[['Team', 'Position', 'First Name', 'Last Name', 'Overall']]
             df['Version'] = version
-            df.to_excel('MaddenRosters/' + version + '/' + team + ext, index=False)
+            df.to_csv('MaddenRosters/' + version + '/' + team + '.csv', index=False)
 
 if __name__ == "__main__":
 
